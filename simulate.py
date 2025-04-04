@@ -1,7 +1,7 @@
 import numpy as np
 from copy import deepcopy
 from big_planet_orb import get_jupiter_orb_fn
-from constants import G
+from constants import G, YEAR
 
 
 class ThreeBodySimulator:
@@ -81,8 +81,9 @@ class ThreeBodySimulator:
             b.velocity = saved_velocities[b] + self.dt * (f1[b] + 2 * f2[b] + 2 * f3[b] + f4[b]) / (6 * b.mass)
 
     def simulate_rk4(self, years=50):
-        steps = int(years * 365 * 24 / self.dt)
+        steps = int(years * YEAR / self.dt)
         trajectories = {b.name: np.zeros((steps, 3)) for b in self.bodies}
+        t_range = np.arange(steps) * self.dt
 
         for step in range(steps):
             # 更新辅助天体轨道
@@ -94,4 +95,4 @@ class ThreeBodySimulator:
 
             self.rk4()
 
-        return trajectories
+        return trajectories, t_range

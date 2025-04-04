@@ -45,7 +45,8 @@ earth_pos1 = earth.at(t2).observe(sun).position.km / AU  # AU
 earth_pos /= np.linalg.norm(earth_pos)
 earth_pos1 /= np.linalg.norm(earth_pos1)
 perp = np.cross(earth_pos, earth_pos1)
-A = np.vstack([earth_pos, earth_pos1, perp])
+perp1 = np.cross(perp, earth_pos)
+A = np.vstack([earth_pos, perp1, perp])
 
 
 def get_initial(cb_name):

@@ -33,13 +33,11 @@ earth = ephemeris['earth']
 # 设定时间为 2025 年 1 月 1 日 00:00 UTC
 ts = load.timescale()
 t = ts.utc(2025, 1, 1, 0, 0, 0)
-t1 = ts.utc(2025, 1, 1, 3, 0, 0)
-t_m = ts.utc(2024, 12, 31, 21, 0)
-t2 = ts.utc(2025, 3, 31, 7, 3, 7)
+t1 = ts.utc(2025, 3, 31, 7, 3, 7)
 
 # 计算相对于太阳的坐标 (单位：AU)
-earth_pos = earth.at(t).observe(sun).position.km / AU  # AU
-earth_pos1 = earth.at(t2).observe(sun).position.km / AU  # AU
+earth_pos = earth.at(t).observe(sun).position.au  # AU
+earth_pos1 = earth.at(t1).observe(sun).position.au  # AU
 
 # 归一化：利用(2025, 1, 1, 0, 0, 0)与(2025, 3, 31, 7, 3, 7)的地球数据进行归一化，确保earth_pos为[1, 0, 0]
 earth_pos /= np.linalg.norm(earth_pos)
@@ -57,11 +55,8 @@ def get_initial(cb_name):
     cb_obj = ephemeris[PLANET_TAG[cb_name]]
 
     # 计算位置和速度
-    pos_m1 = cb_obj.at(t_m).observe(sun).position.km / 1.496e8
-    pos_t1 = cb_obj.at(t1).observe(sun).position.km / 1.496e8
-    velocity = ((pos_t1 - pos_m1) / 6) @ A.T  # AU/h
-
-    pos = (cb_obj.at(t).observe(sun).position.km / 1.496e8) @ A.T
+    velocity = (cb_obj.at(t).observe(sun).velocity.au_per_d / 24) @ A.T  # AU/h
+    pos = cb_obj.at(t).observe(sun).position.au @ A.T # AU
 
     return CelestialBody(
         name=cb_name,

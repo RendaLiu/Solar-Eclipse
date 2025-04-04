@@ -11,6 +11,8 @@ from constants import YEAR
 sun_body = get_initial("Sun")
 earth_body = get_initial("Earth")
 moon_body = get_initial("Moon")
+jupiter_body = get_initial("Jupiter")
+venus_body = get_initial("Venus")
 
 # 创建模拟器（时间步长设为6小时）
 simulator = ThreeBodySimulator(
@@ -46,6 +48,6 @@ filtered_times, filtered_types = check_sun_eclipse(trajectories['Sun'],
                                                    trajectories['Moon'], 
                                                    trajectories['Earth'],
                                                    t_range)
-filtered_times = filtered_times / YEAR + 2025.0
+filtered_times = (filtered_times+6) / YEAR + 2025.0
 for time, type in zip(filtered_times, filtered_types):
     print(Time(time, format='jyear').iso, ": ", type)

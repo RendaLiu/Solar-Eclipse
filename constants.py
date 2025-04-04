@@ -1,6 +1,6 @@
-AU = 1.496e+11
+AU = 1.496e+8
 G = 6.67430e-11 * (3600**2) / (1.496e11)**3
-YEAR = 365 * 24
+YEAR = 365.25636 * 24
 PLANET_MASS = {
     "Sun": 1.9885e30,
     "Mercury": 3.301e23,
@@ -14,16 +14,16 @@ PLANET_MASS = {
     "Moon": 7.3477e22,
 }
 PLANET_RADII = {
-    "Sun": 6.957e8,
-    "Mercury": 2.439e6,
-    "Venus": 6.052e6,
-    "Earth": 6.378e6,
-    "Mars": 3.390e6,
-    "Jupiter": 7.149e7,
-    "Saturn": 6.027e7,
-    "Uranus": 2.556e7,
-    "Neptune": 2.476e7,
-    "Moon": 1.737e6,
+    "Sun": 6.957e5,
+    "Mercury": 2.439e3,
+    "Venus": 6.052e3,
+    "Earth": 6.378e3,
+    "Mars": 3.390e3,
+    "Jupiter": 7.149e4,
+    "Saturn": 6.027e4,
+    "Uranus": 2.556e4,
+    "Neptune": 2.476e4,
+    "Moon": 1.737e3,
 }
 PLANET_TAG = {
     "Sun": 'sun',

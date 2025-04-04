@@ -9,7 +9,7 @@ sun_body = get_initial("Sun")
 earth_body = get_initial("Earth")
 moon_body = get_initial("Moon")
 
-# 创建模拟器（时间步长设为6小时）
+# 创建模拟器（时间步长设为10小时）
 simulator = ThreeBodySimulator(
     bodies=[sun_body, earth_body, moon_body],
     dt=10

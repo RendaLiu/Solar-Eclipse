@@ -1,5 +1,5 @@
 import numpy as np
-from constants import G, PLANET_MASS
+from constants import PLANET_MASS
 from coords import get_initial
 
 M_SUN = PLANET_MASS['Sun']
@@ -24,8 +24,8 @@ def circular_orbit_3d_params(r0, v0):
     # 轨道半径和角速度
     r0_norm = np.linalg.norm(r0)
     v0_norm = np.linalg.norm(v0)
-    a = 1 / (2 / r0_norm - v0_norm**2 / (G * M_SUN))
-    omega = np.sqrt(G * M_SUN / a ** 3)
+    a = 1 / (2 / r0_norm - v0_norm**2 / M_SUN)
+    omega = np.sqrt(M_SUN / a ** 3)
 
     # 初始相位角 (从升交点起算)
     x, y, z = r0

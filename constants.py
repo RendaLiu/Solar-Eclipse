@@ -1,18 +1,20 @@
-AU = 1.496e+8
-G = 6.67430e-11 * (3600**2) / (1.496e11)**3
-YEAR = 365.25636 * 24
+AU = 1.495979e+8
+YEAR = 365.2422 * 24
+# 质量取为GM的值
 PLANET_MASS = {
-    "Sun": 1.9885e30,
-    "Mercury": 3.301e23,
-    "Venus": 4.867e24,
-    "Earth": 5.97237e24,
-    "Mars": 6.417e23,
-    "Jupiter": 1.899e27,
-    "Saturn": 5.683e26,
-    "Uranus": 8.681e25,
-    "Neptune": 1.024e26,
-    "Moon": 7.3477e22,
+    "Sun": 132712440041.279419,
+    "Mercury": 22031.868551,
+    "Venus": 324858.592000,
+    "Earth": 398600.435507,
+    "Mars": 42828.375816,
+    "Jupiter": 126712764.100000,
+    "Saturn": 37940584.841800,
+    "Uranus": 5794556.400000,
+    "Neptune": 6836527.100580,
+    "Moon": 4902.800118,
 }
+for cb in PLANET_MASS.keys():
+    PLANET_MASS[cb] *= (3600**2) / (AU**3)
 PLANET_RADII = {
     "Sun": 6.957e5,
     "Mercury": 2.439e3,

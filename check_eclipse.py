@@ -100,7 +100,7 @@ def detect_accurate_times(check_fun, trajectories, filtered_times, eclipse_types
             fine_moon = trajectories['Moon'][t] * fine_t_range + trajectories['Moon'][t-1] * (1-fine_t_range)
             fine_filtered_times, _ = check_fun(fine_sun, fine_moon, fine_earth, fine_t_range[:, 0])
             eclipse_start.append(t-1+fine_filtered_times[0])
-            eclipse_type.append(eclipse_types[t])
+            eclipse_type.append("partial")
         # 检测退出偏食的时间点
         if eclipse_types[t+1] is None:
             fine_sun = trajectories['Sun'][t+1] * fine_t_range + trajectories['Sun'][t] * (1-fine_t_range)

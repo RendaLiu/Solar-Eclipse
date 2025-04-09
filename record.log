@@ -1,11 +1,11 @@
 Simulate solar eclipses during year 2025 and 2075
 Initial time: 2025-01-01 00:00:00.000
 Start coarse simulation...
-Coarse simulation time: 85.68607687950134
+Coarse simulation time: 118.07987666130066
 Start detecting sun eclipses...
-Sun eclipse calculation time: 0.2606370449066162
+Sun eclipse calculation time: 0.29926633834838867
 Start detecting moon eclipses...
-Moon eclipse calculation time: 0.19100117683410645
+Moon eclipse calculation time: 0.20812392234802246
 Simulation ended. Print results:
 ============================================================
 Times of sun eclipses:
@@ -386,7 +386,7 @@ Max time: 2045-08-12 17:31:30.000
 End time 2045-08-12 20:00:00.000
 ------------------------------------------------------------
 Start time: 2045-08-12 15:03:00.000
-Type: total
+Type: partial
 Max time: 2045-08-12 17:38:06.000
 End time 2045-08-12 20:13:12.000
 ------------------------------------------------------------
@@ -601,7 +601,7 @@ Max time: 2057-01-05 09:30:18.000
 End time 2057-01-05 12:00:00.000
 ------------------------------------------------------------
 Start time: 2057-01-05 07:00:36.000
-Type: total
+Type: partial
 Max time: 2057-01-05 09:39:36.000
 End time 2057-01-05 12:18:36.000
 ------------------------------------------------------------

@@ -1,0 +1,119 @@
+\documentclass[hidelinks]{article}
+\usepackage[a4paper, total={7in, 10in}]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usepackage[unicode]{hyperref}
+\usepackage[all]{hypcap}
+\usepackage{fancyhdr}
+\usepackage[UTF8,fontset=fandol]{ctex}
+
+\usetikzlibrary{angles,calc, decorations.pathreplacing}
+
+\definecolor{carminered}{rgb}{1.0, 0.0, 0.22}
+\definecolor{capri}{rgb}{0.0, 0.75, 1.0}
+\definecolor{brightlavender}{rgb}{0.75, 0.58, 0.89}
+
+\title{\textbf{Project 1: Solar Eclipse Prediction}}
+\author{刘任达\\文哲\\蒋弘杰}
+\date{March 24th, 2025}
+\begin{document}
+\hypersetup{bookmarksnumbered=true,}
+\maketitle
+\setcounter{tocdepth}{2}
+\begin{Large}
+\tableofcontents
+\end{Large}%
+\pagebreak
+
+\section{背景介绍}
+
+\section{理论分析}
+\subsection{总论}
+经典的$N$体运动方程为：
+$$
+M_i\ddot{\mathbf{r}}_i = \sum_{j=1}^N\frac{GM_iM_j}{||\mathbf{r}_j-\mathbf{r}_i||^3}(\mathbf{r}_j-\mathbf{r}_i)
+$$
+其中${M_i}$为各个天体的质量，$\mathbf{r}_i$为各个天体的位矢。
+\subsection{A Toy Model}
+将太阳固定在坐标系中心（记为S系），地月绕其运动方程为：
+\begin{align*}
+    M_e\ddot{\mathbf{r}}_e&=-\frac{GM_sM_e}{||\mathbf{r}_e||^3}\mathbf{r}_e+\frac{GM_mM_e}{||\mathbf{r}_m-\mathbf{r}_e||^3}(\mathbf{r}_m-\mathbf{r}_e)\\
+    M_m\ddot{\mathbf{r}}_m&=-\frac{GM_sM_m}{||\mathbf{r}_m||^3}\mathbf{r}_m+\frac{GM_eM_m}{||\mathbf{r}_e-\mathbf{r}_m||^3}(\mathbf{r}_e-\mathbf{r}_m)
+\end{align*}
+\subsection{误差及修正分析}
+本节中对常见的需要纳入考量的影响因素的误差及其处理方式做了讨论，详细的推导尚未给出，计划择重点放于附录中。
+\subsubsection{理论误差}
+这里主要讨论了使用的物理理论并非精确带来的误差。
+\paragraph{相对论}
+狭义及广义相对论直接改变了最底层运动方程，其带来的影响无法严格计算，但影响的量级可以估计为 $\epsilon_r=(\frac{v}{c})^2\sim(\frac{2\pi r_e}{cT_e})^2\sim1\times10^{-8}$。
+\\
+\\
+相对论（尤其是广义相对论）的引入会极大地增加求解的难度和复杂度，在这里不得不将其忽略，因此所得结果的误差界量级至少也有$10^{-8}$，此后所有影响量级在此之下的误差均会在讨论中指出并直接忽略。
+\subsubsection{模型误差}
+这里主要讨论了讨论的日地月系统外的天体系统及其效应带来的误差。
+\paragraph{大行星}
+以木星为代表的大行星质量相对大，与地球距离相对近，其产生的引力扰动量级可以估计为$\epsilon_j\sim\frac{M_jr_e^2}{M_s(r_j-r_e)^2}\sim5\times10^{-5}$。
+\paragraph{惯性力}
+太阳受到太阳系内各个行星的作用会导致S系中各个天体受到惯性力的作用，其产生的扰动量级可以估计为$\epsilon_a\sim\frac{M_jr_e^2}{M_sr_j^2}\sim4\times10^{-5}$，这个扰动与大行星的扰动同源，必须同时忽略或纳入考虑。
+\paragraph{银河系以及更大的天体系统}
+太阳系以约2.2亿个地球年为周期绕银河系作半径约为2.6万光年公转，同时银河系的其他部分的引力也会对太阳系中的天体产生长程作用，这个作用的强度可利用潮汐效应来估计$\epsilon_g\sim(\frac{2\pi}{T_s})^2r_s\frac{r_e}{r_{nearest}}\sim8\times10^{-16}$，可以直接忽略。
+\\
+\\
+为处理大行星和惯性力带来的影响，可以采用渐进微扰的思路，将各个系统绕太阳作独立圆周运动作为零阶微扰的结果，各个系统间的影响视作一阶效应，由于二阶及更高的效应量级为$\epsilon^2\sim10^{-10}$可以忽略，我们最终求解的系统就是一个独立系统加上其他部分对其一阶微扰的结果。具体来讲：
+\begin{align*}
+    M_j\ddot{\mathbf{r}}_j^{(0)}&=-\frac{GM_sM_e}{||\mathbf{r}_j^{(0)}||^3}\mathbf{r}_j^{(0)}\\
+    M_e\ddot{\mathbf{r}}_e^{(0)}&=-\frac{GM_sM_e}{||\mathbf{r}_e^{(0)}||^3}\mathbf{r}_e^{(0)}+\frac{GM_mM_e}{||\mathbf{r}_m^{(0)}-\mathbf{r}_e^{(0)}||^3}(\mathbf{r}_m^{(0)}-\mathbf{r}_e^{(0)})\\   
+    M_m\ddot{\mathbf{r}}_m^{(0)}&=-\frac{GM_sM_m}{||\mathbf{r}_m^{(0)}||^3}\mathbf{r}_m^{(0)}+\frac{GM_eM_m}{||\mathbf{r}_e^{(0)}-\mathbf{r}_m^{(0)}||^3}(\mathbf{r}_e^{(0)}-\mathbf{r}_m^{(0)})
+\end{align*}
+考虑一阶扰动后：
+\begin{align*}
+    M_s\mathbf{a}_s^{(1)}&=\frac{GM_sM_j}{||\mathbf{r}_j^{(0)}||^3}\mathbf{r}_j^{(0)}+\frac{GM_sM_e}{||\mathbf{r}_e^{(0)}||^3}\mathbf{r}_e^{(0)}+\frac{GM_sM_m}{||\mathbf{r}_m^{(0)}||^3}\mathbf{r}_m^{(0)}\\
+    M_e\ddot{\mathbf{r}}_e^{(1)}&=-\frac{GM_sM_e}{||\mathbf{r}_e^{(1)}||^3}\mathbf{r}_e^{(1)}+\frac{GM_mM_e}{||\mathbf{r}_m^{(1)}-\mathbf{r}_e^{(1)}||^3}(\mathbf{r}_m^{(1)}-\mathbf{r}_e^{(1)})+\frac{GM_eM_j}{||\mathbf{r}_j^{(0)}-\mathbf{r}_e^{(1)}||^3}(\mathbf{r}_j^{(0)}-\mathbf{r}_e^{(1)})-M_e\mathbf{a}_s^{(1)}\\
+    M_m\ddot{\mathbf{r}}_m^{(1)}&=-\frac{GM_sM_m}{||\mathbf{r}_m^{(1)}||^3}\mathbf{r}_m^{(1)}+\frac{GM_eM_m}{||\mathbf{r}_e^{(1)}-\mathbf{r}_m^{(1)}||^3}(\mathbf{r}_e^{(1)}-\mathbf{r}_m^{(1)})+\frac{GM_mM_j}{||\mathbf{r}_j^{(0)}-\mathbf{r}_m^{(1)}||^3}(\mathbf{r}_j^{(0)}-\mathbf{r}_m^{(1)})-M_m\mathbf{a}_s^{(1)}
+\end{align*}
+化简后可以得到展开到一阶的运动方程：
+\begin{align*}
+    \ddot{\mathbf{r}}_e^{(1)}&=-\frac{G(M_s+M_m+M_e)}{||\mathbf{r}_e^{(1)}||^3}\mathbf{r}_e^{(1)}+\frac{GM_m}{||\mathbf{r}_m^{(1)}-\mathbf{r}_e^{(1)}||^3}(\mathbf{r}_m^{(1)}-\mathbf{r}_e^{(1)})+\frac{GM_j}{||\mathbf{r}_j^{(0)}-\mathbf{r}_e^{(1)}||^3}(\mathbf{r}_j^{(0)}-\mathbf{r}_e^{(1)})-\frac{GM_j}{||\mathbf{r}_j^{(0)}||^3}\mathbf{r}_j^{(0)}\\
+    \ddot{\mathbf{r}}_m^{(1)}&=-\frac{G(M_s+M_e+M_m)}{||\mathbf{r}_m^{(1)}||^3}\mathbf{r}_m^{(1)}+\frac{GM_e}{||\mathbf{r}_e^{(1)}-\mathbf{r}_m^{(1)}||^3}(\mathbf{r}_e^{(1)}-\mathbf{r}_m^{(1)})+\frac{GM_j}{||\mathbf{r}_j^{(0)}-\mathbf{r}_m^{(1)}||^3}(\mathbf{r}_j^{(0)}-\mathbf{r}_m^{(1)})-\frac{GM_j}{||\mathbf{r}_j^{(0)}||^3}\mathbf{r}_j^{(0)}
+\end{align*}
+其中在一阶项中作了额外近似$\epsilon_m=\frac{||\mathbf{r}_e^{(0)}-\mathbf{r}_m^{(0)}||}{||\mathbf{r}_e^{(0)}||}\sim3\times10^{-3}$，在考虑了上述一阶修正后的剩余的误差阶大致在$\epsilon_m\epsilon_j\sim3\times10^{-8}$。从形式可以看出，除了将太阳的质量用有效质量$M_s+M_e+M_m$代替外，增加的大行星扰动项相当于一个已知的外场，计算复杂度并不会随着考虑大行星数量的增多而明显上升。
+\subsubsection{几何误差}
+这里主要讨论将天体建模为质点带来的引力计算上的误差。
+\paragraph{非球形建模}众所周知由于自转效应的影响地球是一个两极稍扁赤道略鼓的椭球，这就导致地球的引力并非严格等效于球心处的质点，考虑引力场的的球谐展开：
+\begin{align*}
+    G(\mathbf{r})&=\int_{\Omega}\frac{G\rho(\mathbf{R})}{||\mathbf{R}-\mathbf{r}||}\mathrm{d}^3\mathbf{R}\\
+    &=G\sum_{n=0}^\infty\frac{1}{r^{n+1}}\int_\Omega R^n\rho(\mathbf{R})P_n(\cos{\psi})\mathrm{d}^3\mathbf{R}
+\end{align*}
+可见高阶矩的影响随着距离的增加而迅速减弱（以地月系统为例$\frac{||\mathbf{R}_e||}{||\mathbf{r}_m-\mathbf{r}_e||}\sim0.02$），实验测量给出地球二阶系数的量级$J_2\sim1\times10^{-3}$，因此唯一可能有有效影响的$J_2$摄动在地月系统中影响量级为$\epsilon_e\sim(\frac{||\mathbf{R}_e||}{||\mathbf{r}_m-\mathbf{r}_e||})^2J_2\sim4\times10^{-7}$，而与太阳相关的摄动影响更加不明显，无需纳入考虑。
+\subsubsection{观测误差}
+由于我们预测的是“观测到日（月）食的时间”，所以一些观测建模上的误差也要纳入讨论。
+\paragraph{光传播用时}
+在宇宙尺度中光速会让日（月）食的发生不再是一个单纯的几何问题，由于发生时日地月基本在一条直线上，月（地）对太阳光线的遮挡与地球上观测到这个现象之间间隔的时间可以直接用光传播的时间进行近似$\Delta t_l\sim2\frac{||\mathbf{r}_e-\mathbf{r}_m||}{c}\sim2s$，发生和观测时间的不同步也会对日（月）食判断的几何条件带来影响，这个影响带来的时间上的误差也在同一量级。
+\paragraph{历法}
+本来照理说预测的是发生的绝对时间，不应该和地球自转这种人为的历法带来的误差扯上关系，暂且根据闰秒的添加频率估计$\Delta t_d\sim 1s$。
+\paragraph{大气}
+标准大气的折射率$n_a=1+2.9\times10^{-4}$，在地球大气层随着高度的上升，这个值由于空气变得稀薄越来越接近于1，这会导致光线产生弯曲。另外，光的散射也会导致部分波长的光到达月球后强度有不同程度的减弱，从而带来其他观测上的效应。对于日食，这个偏转作用在地球表面量级为$\theta=\theta_0-\sin^{-1}(\frac{1}{n_a}\sin\theta_0)\sim1.4^\circ$，对时间的影响量级为$\Delta t_n\sim\frac{\theta}{2\pi}T_0\sim20s$，但是这个误差随一天不同时间的变化明显，在接近日出（日落）时最为明显，在正午则无理论影响。对于月食，这个误差等效为地球半径的变化（即大气层的一部分由于光的被散射或是吸收从而增大了地球的阴影范围），但因为大气密度随着海拔指数的下降，在距离地表50km处就下降到地表处的1\%以下，大气对地球有效半径的影响甚至没有地球本身形状带来的影响明显。
+\paragraph{其他几何因素}
+地月半径的不均匀等其他几何因素也会对日（月）食的形态产生影响，这一影响的量级仍有待实验验证，
+\\
+\\
+这一部分出现的误差由于直接作用于观测端，并不能直接与前面提到的建模误差进行量级上的比较。可以根据最后误差的敏感性来考量是否将其纳入考虑。
+\subsubsection{结论}
+按照前面提出的处理方法，最终观测时间的误差阶为$4\times10^{-7}\pm20s$。
+\subsection{运动方程的无量纲化处理}
+\section{数值算法}
+
+\section{实验结果}
+
+\section{讨论}
+
+\section{附录}
+\subsection{常见太阳系相关物理常数汇总}
+\begin{itemize}
+    \item 天体质量
+    \item 天体半径
+    \item 天体公转轨道半径（平均）
+\end{itemize}
+\end{document}

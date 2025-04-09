@@ -21,13 +21,13 @@ def double_accuracy_simulation():
     moon_body = get_initial("Moon")
     jupiter_body = get_initial("Jupiter")
     venus_body = get_initial("Venus")
-    planet_list = [sun_body, earth_body, moon_body, jupiter_body, venus_body]
+    planet_list = [sun_body, earth_body, moon_body, jupiter_body]
     aux_planet_list = []
-    # 创建模拟器（时间步长设为6小时）
+    # 创建模拟器（时间步长为粗步长）
     simulator = ThreeBodySimulator(
         bodies=planet_list,
         aux_list=aux_planet_list,
-        dt=1
+        dt=coarse_step
     )
     # 运行50年模拟
     print("Start coarse simulation...")

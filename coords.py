@@ -1,6 +1,6 @@
 from skyfield.api import load
 import numpy as np
-from constants import AU, PLANET_TAG, PLANET_MASS, PLANET_RADII
+from constants import PLANET_TAG, PLANET_MASS, PLANET_RADII
 
 
 class CelestialBody:

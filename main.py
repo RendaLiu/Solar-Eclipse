@@ -21,7 +21,7 @@ def double_accuracy_simulation():
     moon_body = get_initial("Moon")
     jupiter_body = get_initial("Jupiter")
     venus_body = get_initial("Venus")
-    planet_list = [sun_body, earth_body, moon_body, jupiter_body]
+    planet_list = [sun_body, earth_body, moon_body, jupiter_body, venus_body]
     aux_planet_list = []
     # 创建模拟器（时间步长设为6小时）
     simulator = ThreeBodySimulator(

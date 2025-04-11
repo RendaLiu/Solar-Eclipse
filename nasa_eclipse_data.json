@@ -90,7 +90,7 @@
             },
             {
                 "date": "2031-11-14",
-                "type": "annular",
+                "type": "total",
                 "max_time": "21:07:31"
             }
         ],
@@ -326,14 +326,14 @@
             },
             {
                 "date": "2049-11-25",
-                "type": "annular",
+                "type": "total",
                 "max_time": "05:33:48"
             }
         ],
         "2050": [
             {
                 "date": "2050-05-20",
-                "type": "annular",
+                "type": "total",
                 "max_time": "20:42:19"
             },
             {
@@ -567,7 +567,7 @@
             },
             {
                 "date": "2067-12-06",
-                "type": "annular",
+                "type": "total",
                 "max_time": "14:03:43"
             }
         ],

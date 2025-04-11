@@ -16,7 +16,7 @@
 \definecolor{brightlavender}{rgb}{0.75, 0.58, 0.89}
 
 \title{\textbf{Project 1: Solar Eclipse Prediction}}
-\author{刘任达\\文哲\\蒋弘杰}
+\author{刘任达\\盛文哲\\蒋弘杰}
 \date{March 24th, 2025}
 \begin{document}
 \hypersetup{bookmarksnumbered=true,}
@@ -28,6 +28,7 @@
 \pagebreak
 
 \section{背景介绍}
+
 日食与月食作为人类历史上最引人注目的天体现象之一，不仅是天文学研究的重要对象，更承载着文化、历史和科学探索的多重意义。从古代巴比伦的"沙罗周期"到现代天体力学的高精度数值模拟，人类对日月食的预测始终是连接数学、物理学与天文学的前沿课题。本文致力于运用数学建模与数值分析的严谨方法，在经典天体力学框架下探索多体问题的复杂性，并尝试以创新的技术手段提升预测精度。
 
 在理论层面，日月食的发生本质上是地月系轨道运动与太阳几何关系的周期性呈现。（见图\ref{fig:eclipse}）自牛顿建立万有引力定律以来，二体问题的解析解为天体轨道计算奠定了基础，但实际天文系统中的引力摄动效应（如木星等大质量天体的影响）使得问题迅速复杂化。传统日月食预测多基于简化模型（如忽略高阶摄动项或采用经验周期修正），这类方法虽能提供定性规律，却难以满足高精度、长周期的预测需求。因此，如何构建兼顾计算效率与精度的多体动力学模型，成为天体力学数值模拟领域的重要挑战。
@@ -48,6 +49,7 @@
 \end{figure}
 
 本研究的创新性体现在两方面：其一，通过引入四阶龙格-库塔方法处理四体问题，突破了传统三体模型的局限性；其二，在判别条件设计中，我们严格依据国际天文联合会（IAU）的日月食判据标准，并针对数值计算结果开发了自动化事件检测算法。最终实现的预测结果与NASA权威星历表的高度吻合，不仅验证了模型的有效性，更彰显了数学建模在现代天体力学研究中的核心价值。
+
 \section{理论分析}
 \subsection{总论}
 经典的$N$体运动方程为:
@@ -121,14 +123,126 @@ $$
 \section{数值算法}
 
 \section{实验结果}
-目前根据我们的数值算法，已实现对2025年至2075年全部日食和月食事件的百分百预测，其中对食分时刻的预测误差控制在30min以内，极少事件会出现20min以上的误差（见图\ref{fig:eclipse_error}）
+目前根据我们的数值算法，已实现对2025年至2075年全部日食和月食事件的百分百预测。此部分中所有实验选取同一个对照组，采用的参数是：模拟日地月木金的体系，时间步长取为1小时。
+如此得到的预测结果中，对食分时刻的预测误差控制在20min以内，极少事件会出现10min以上的误差（见图\ref{fig:eclipse_error}），这和理论误差分析的结果在量级上吻合的很好。
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\linewidth]{images/error_distribution.png}
-    \caption{2025年至2075年日食和月食预测事件食甚时刻的误差分布}
+    \includegraphics[width=0.5\linewidth]{images/error_distribution_1.png}
+    \caption{对照组（预测准确率96.70\%）}
     \label{fig:eclipse_error}
 \end{figure}
+
+同时绘制了此对照组对应的地月位置和星表中标准值的误差变化曲线，如图\ref{fig:position_error}所示（图中的负号由于绘图原因无法正常显示）：
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/position_errors.png}
+    \caption{对照组（预测准确率96.70\%）}
+    \label{fig:position_error}
+\end{figure}
+
+在此基础上，我们对参数的影响进行了粗略的估计。在程序中影响模拟结果的参数主要包括时间步长、天体数量和各类天文常数。
+由于最终结果对参数的依赖关系非常复杂，我们采用微调参数的值来估计参数的误差对结果有多大影响。\\
+在具体陈列实验结果之前，需要说明：由于我们的最终目标是预测日/月食的时间而非模拟太阳系内天体的运动，应该将最后模拟的精度和正确率作为唯一的评价标准，而非单独追求三个天体位置的正确性。
+所以，在所有实验中，我们均以最后得到的日/月食时间误差而非天体位置作为评价标准。
+首先是时间步长，模拟发现不同时间步长下的误差分布如图\ref{fig:eclipse_error_0.5}、图\ref{fig:eclipse_error_1}、图\ref{fig:eclipse_error_2}所示：
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/error_distribution_0.5.png}
+    \caption{时间步长：0.5（预测准确率：99.45\%）}
+    \label{fig:eclipse_error_0.5}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/error_distribution_1.png}
+    \caption{时间步长：1（预测准确率：96.70\%）}
+    \label{fig:eclipse_error_1}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/error_distribution_2.png}
+    \caption{时间步长：1（预测准确率：80.77\%）}
+    \label{fig:eclipse_error_2}
+\end{figure}
+
+由此可见，在我们目前的精度下，选取时间步长t=1不会对时间精度产生明显影响，只会略微影响到日/月食判断的准确率（这是因为过长的步长有可能直接跳过一些事件）。
+而步长取为2之后则明显看出模拟的精度（无论预测的时间还是准确率）受到了影响。
+为方便起见，在以后实验中，若无特殊说明，所有模拟的时间步长均取为1。\\
+
+然后考虑天体数量对模拟的影响，分别在：日地月、日地月+木、日地月+金木、日地月+金木（作为外场）、日地月+金木土，共五种设定下进行实验。
+得到结果如图\ref{fig:eclipse_error_sem}、图\ref{fig:eclipse_error_semj}、图\ref{fig:eclipse_error_semjv}、图\ref{fig:eclipse_error_semjv_aux}、图\ref{fig:eclipse_error_semjvs_aux}所示：
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/error_distribution_sem.png}
+    \caption{体系：日地月（预测准确率：86.26\%）}
+    \label{fig:eclipse_error_sem}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/error_distribution_semj.png}
+    \caption{体系：日地月+木（预测准确率：92.31\%）}
+    \label{fig:eclipse_error_semj}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/error_distribution_1.png}
+    \caption{体系：日地月+金木（预测准确率：96.70\%）}
+    \label{fig:eclipse_error_semjv}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/error_distribution_semjv_aux.png}
+    \caption{体系：日地月+金木（作为外场）（预测准确率：96.70\%）}
+    \label{fig:eclipse_error_semjv_aux}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/error_distribution_semjvs_aux.png}
+    \caption{体系：日地月+金木土（作为外场）（预测准确率：96.70\%）}
+    \label{fig:eclipse_error_semjvs_aux}
+\end{figure}
+
+由此可见，木星和金星均对预测结果有着明显的影响，在此基础上，将大行星的影响作为外场考虑并不会带来明显的误差，并且这个近似带来的准确率损失远不如能够进一步添加其他行星系统带来的收益。\\
+最后考虑天文常数对结果的影响，对天体的质量作量级为$10^{-7}$量级的扰动，观察结果，如图\ref{fig:eclipse_error_sun}、图\ref{fig:eclipse_error_earth}、图\ref{fig:eclipse_error_moon}：
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/error_distribution_sun.png}
+    \caption{扰动对象：太阳质量（预测准确率：96.70\%）}
+    \label{fig:eclipse_error_sun}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/error_distribution_earth.png}
+    \caption{扰动对象：地球质量（预测准确率：96.70\%）}
+    \label{fig:eclipse_error_earth}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/error_distribution_earth.png}
+    \caption{扰动对象：月球质量（预测准确率：96.70\%）}
+    \label{fig:eclipse_error_moon}
+\end{figure}
+
+可以发现在日、地、月三者中，对最终结果影响最明显的是地球，然而比较影响后的轨道可以发现（具体数据在这里不进一步列出），对绝对位置影响最明显的是太阳的质量。
+这佐证了之前应该使用最终日/月食时间误差而非天体位置作为结果优劣的评价标准。同时，由于我们使用的天体质量精度都在10位有效数字以上，无需担心来自这方面的误差。\\
+最后，绘制最优的参数组合（综合考虑运行速度和精度）下的结果如图\ref{fig:eclipse_error_best}所示，可以看到预测的误差均在15min以内，绝大部分预测的误差都在10min以内。
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/error_distribution.png}
+    \caption{最优结果（预测准确率：99.45\%）}
+    \label{fig:eclipse_error_best}
+\end{figure}
+
 \section{讨论}
 
 \section{附录}

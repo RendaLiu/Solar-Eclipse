@@ -24,7 +24,7 @@ class CelestialBody:
 
 
 # 加载 JPL DE 精度表
-ephemeris = load('de421.bsp')
+ephemeris = load('de440.bsp')
 
 # 获取天体对象
 sun = ephemeris['sun']
@@ -42,8 +42,8 @@ def get_initial(cb_name):
     cb_obj = ephemeris[PLANET_TAG[cb_name]]
 
     # 计算位置和速度
-    velocity = cb_obj.at(t).observe(sun).velocity.au_per_d / 24 # AU/h
-    pos = cb_obj.at(t).observe(sun).position.au # AU
+    velocity = cb_obj.at(t).observe(sun).velocity.au_per_d / 24  # AU/h
+    pos = cb_obj.at(t).observe(sun).position.au  # AU
 
     return CelestialBody(
         name=cb_name,
@@ -54,6 +54,6 @@ def get_initial(cb_name):
     )
 
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
     moon = get_initial("Moon")
     print(moon.mass)

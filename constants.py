@@ -37,4 +37,5 @@ PLANET_TAG = {
     "Earth": 'earth',
     "Jupiter": 'jupiter barycenter',
     "Moon": 'moon',
+    "Saturn": 'saturn barycenter'
 }

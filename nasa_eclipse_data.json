@@ -816,7 +816,7 @@
         "2043": [
             {
                 "date": "2043-03-25",
-                "type": "partial",
+                "type": "total",
                 "max_time": "14:32:04"
             },
             {
@@ -876,12 +876,12 @@
         "2050": [
             {
                 "date": "2050-05-06",
-                "type": "partial",
+                "type": "total",
                 "max_time": "22:32:02"
             },
             {
                 "date": "2050-10-30",
-                "type": "partial",
+                "type": "total",
                 "max_time": "03:21:47"
             }
         ],

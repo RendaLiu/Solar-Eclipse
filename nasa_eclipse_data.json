@@ -244,14 +244,14 @@
             },
             {
                 "date": "2043-10-03",
-                "type": "partial",
+                "type": "annular",
                 "max_time": "03:01:06"
             }
         ],
         "2044": [
             {
                 "date": "2044-02-28",
-                "type": "partial",
+                "type": "annular",
                 "max_time": "20:24:39"
             },
             {
@@ -349,11 +349,6 @@
                 "max_time": "02:10:39"
             },
             {
-                "date": "2051-05-10",
-                "type": "partial",
-                "max_time": "10:15:45"
-            },
-            {
                 "date": "2051-10-04",
                 "type": "partial",
                 "max_time": "21:02:14"
@@ -396,7 +391,7 @@
             },
             {
                 "date": "2054-09-02",
-                "type": "total",
+                "type": "partial",
                 "max_time": "01:09:34"
             }
         ],
@@ -671,412 +666,424 @@
             {
                 "date": "2025-03-14",
                 "type": "total",
-                "max_time": "07:00:00"
+                "max_time": "06:59:56"
             },
             {
                 "date": "2025-09-07",
                 "type": "total",
-                "max_time": "18:00:00"
+                "max_time": "18:12:58"
             }
         ],
         "2026": [
             {
                 "date": "2026-03-03",
                 "type": "total",
-                "max_time": "12:00:00"
+                "max_time": "11:34:52"
             },
             {
                 "date": "2026-08-28",
                 "type": "partial",
-                "max_time": "04:12:00"
+                "max_time": "04:14:04"
             }
         ],
         "2028": [
             {
                 "date": "2028-01-12",
                 "type": "partial",
-                "max_time": "04:12:00"
+                "max_time": "04:14:13"
             },
             {
                 "date": "2028-07-06",
                 "type": "partial",
-                "max_time": "18:19:00"
+                "max_time": "18:20:57"
             },
             {
                 "date": "2028-12-31",
                 "type": "total",
-                "max_time": "17:00:00"
+                "max_time": "16:53:15"
             }
         ],
         "2029": [
             {
                 "date": "2029-06-26",
                 "type": "total",
-                "max_time": "03:30:00"
+                "max_time": "03:23:22"
             },
             {
                 "date": "2029-12-20",
                 "type": "total",
-                "max_time": "23:00:00"
+                "max_time": "22:43:12"
             }
         ],
         "2030": [
             {
                 "date": "2030-06-15",
                 "type": "partial",
-                "max_time": "18:32:00"
+                "max_time": "18:34:34"
             }
         ],
         "2032": [
             {
                 "date": "2032-04-25",
                 "type": "total",
-                "max_time": "15:12:00"
+                "max_time": "15:14:51"
             },
             {
                 "date": "2032-10-18",
                 "type": "total",
-                "max_time": "19:01:00"
+                "max_time": "19:03:40"
             }
         ],
         "2033": [
             {
                 "date": "2033-04-14",
                 "type": "total",
-                "max_time": "19:11:00"
+                "max_time": "19:13:51"
             },
             {
                 "date": "2033-10-08",
                 "type": "total",
-                "max_time": "10:53:00"
+                "max_time": "10:56:23"
             }
         ],
         "2035": [
             {
                 "date": "2035-08-19",
                 "type": "partial",
-                "max_time": "01:08:00"
+                "max_time": "01:12:15"
             }
         ],
         "2036": [
             {
                 "date": "2036-02-11",
                 "type": "total",
-                "max_time": "22:09:00"
+                "max_time": "22:13:06"
             },
             {
                 "date": "2036-08-07",
                 "type": "total",
-                "max_time": "02:48:00"
+                "max_time": "02:52:32"
             }
         ],
         "2037": [
             {
                 "date": "2037-01-31",
                 "type": "total",
-                "max_time": "13:58:00"
+                "max_time": "14:01:38"
             },
             {
                 "date": "2037-07-27",
                 "type": "partial",
-                "max_time": "04:06:00"
+                "max_time": "04:09:53"
             }
         ],
         "2039": [
             {
                 "date": "2039-06-06",
                 "type": "partial",
-                "max_time": "18:51:00"
+                "max_time": "18:54:25"
             },
             {
                 "date": "2039-11-30",
                 "type": "partial",
-                "max_time": "16:51:00"
+                "max_time": "16:56:28"
             }
         ],
         "2040": [
             {
                 "date": "2040-05-26",
                 "type": "total",
-                "max_time": "11:42:00"
+                "max_time": "11:46:22"
             },
             {
                 "date": "2040-11-18",
                 "type": "total",
-                "max_time": "18:59:00"
+                "max_time": "19:04:40"
             }
         ],
         "2041": [
             {
                 "date": "2041-05-16",
                 "type": "partial",
-                "max_time": "00:39:00"
+                "max_time": "00:43:03"
             },
             {
                 "date": "2041-11-08",
                 "type": "partial",
-                "max_time": "04:29:00"
+                "max_time": "04:35:05"
             }
         ],
         "2043": [
             {
                 "date": "2043-03-25",
                 "type": "partial",
-                "max_time": "14:26:00"
+                "max_time": "14:32:04"
             },
             {
                 "date": "2043-09-19",
                 "type": "total",
-                "max_time": "01:46:00"
+                "max_time": "01:51:50"
             }
         ],
         "2044": [
             {
                 "date": "2044-03-13",
                 "type": "total",
-                "max_time": "19:33:00"
+                "max_time": "19:38:33"
             },
             {
                 "date": "2044-09-07",
                 "type": "total",
-                "max_time": "11:15:00"
+                "max_time": "11:20:44"
             }
         ],
         "2046": [
             {
+                "date": "2046-01-22",
+                "type": "partial",
+                "max_time": "13:02:37"
+            },
+            {
                 "date": "2046-07-18",
                 "type": "partial",
-                "max_time": "00:59:00"
+                "max_time": "01:06:05"
             }
         ],
         "2047": [
             {
                 "date": "2047-01-12",
                 "type": "total",
-                "max_time": "01:19:00"
+                "max_time": "01:26:14"
             },
             {
                 "date": "2047-07-07",
                 "type": "total",
-                "max_time": "10:30:00"
+                "max_time": "10:35:45"
             }
         ],
         "2048": [
             {
                 "date": "2048-01-01",
                 "type": "total",
-                "max_time": "06:45:00"
+                "max_time": "06:53:55"
             },
             {
                 "date": "2048-06-26",
                 "type": "partial",
-                "max_time": "01:57:00"
+                "max_time": "02:02:28"
             }
         ],
         "2050": [
             {
                 "date": "2050-05-06",
                 "type": "partial",
-                "max_time": "22:25:00"
+                "max_time": "22:32:02"
             },
             {
                 "date": "2050-10-30",
                 "type": "partial",
-                "max_time": "03:14:00"
+                "max_time": "03:21:47"
             }
         ],
         "2051": [
             {
                 "date": "2051-04-26",
                 "type": "total",
-                "max_time": "02:08:00"
+                "max_time": "02:16:28"
             },
             {
                 "date": "2051-10-19",
                 "type": "total",
-                "max_time": "19:05:00"
+                "max_time": "19:11:50"
             }
         ],
         "2052": [
             {
                 "date": "2052-10-08",
                 "type": "partial",
-                "max_time": "10:38:00"
+                "max_time": "10:45:58"
             }
         ],
         "2054": [
             {
                 "date": "2054-02-22",
                 "type": "total",
-                "max_time": "06:44:00"
+                "max_time": "06:51:27"
             },
             {
                 "date": "2054-08-18",
                 "type": "total",
-                "max_time": "09:16:00"
+                "max_time": "09:26:30"
             }
         ],
         "2055": [
             {
                 "date": "2055-02-11",
                 "type": "total",
-                "max_time": "22:39:00"
+                "max_time": "22:46:17"
             },
             {
                 "date": "2055-08-07",
                 "type": "partial",
-                "max_time": "10:44:00"
+                "max_time": "10:53:18"
             }
         ],
         "2057": [
             {
                 "date": "2057-06-17",
                 "type": "partial",
-                "max_time": "02:19:00"
+                "max_time": "02:26:20"
             },
             {
                 "date": "2057-12-10",
                 "type": "partial",
-                "max_time": "00:42:00"
+                "max_time": "00:53:38"
             }
         ],
         "2058": [
             {
                 "date": "2058-06-06",
                 "type": "total",
-                "max_time": "19:09:00"
+                "max_time": "19:15:48"
             },
             {
                 "date": "2058-11-30",
                 "type": "total",
-                "max_time": "03:05:00"
+                "max_time": "03:16:18"
             }
         ],
         "2059": [
             {
                 "date": "2059-05-27",
                 "type": "partial",
-                "max_time": "07:47:00"
+                "max_time": "07:55:35"
             },
             {
                 "date": "2059-11-19",
                 "type": "partial",
-                "max_time": "12:52:00"
+                "max_time": "13:01:36"
             }
         ],
         "2061": [
             {
                 "date": "2061-04-04",
-                "type": "partial",
-                "max_time": "21:43:00"
+                "type": "total",
+                "max_time": "21:54:05"
             },
             {
                 "date": "2061-09-29",
-                "type": "partial",
-                "max_time": "09:29:00"
+                "type": "total",
+                "max_time": "09:38:13"
             }
         ],
         "2062": [
             {
                 "date": "2062-03-25",
                 "type": "total",
-                "max_time": "03:24:00"
+                "max_time": "03:33:50"
             },
             {
                 "date": "2062-09-18",
                 "type": "total",
-                "max_time": "18:23:00"
+                "max_time": "18:34:02"
             }
         ],
         "2063": [
             {
                 "date": "2063-03-14",
                 "type": "partial",
-                "max_time": "15:56:00"
+                "max_time": "16:05:49"
+            }
+        ],
+        "2064": [
+            {
+                "date": "2064-02-02",
+                "type": "partial",
+                "max_time": "21:48:57"
+            },
+            {
+                "date": "2064-07-28",
+                "type": "partial",
+                "max_time": "07:52:48"
             }
         ],
         "2065": [
             {
                 "date": "2065-01-22",
                 "type": "total",
-                "max_time": "09:47:00"
+                "max_time": "09:58:58"
             },
             {
                 "date": "2065-07-17",
                 "type": "total",
-                "max_time": "17:39:00"
+                "max_time": "17:48:40"
             }
         ],
         "2066": [
             {
                 "date": "2066-01-11",
                 "type": "total",
-                "max_time": "14:51:00"
+                "max_time": "15:04:47"
             },
             {
                 "date": "2066-07-07",
                 "type": "partial",
-                "max_time": "09:21:00"
+                "max_time": "09:30:29"
             }
         ],
         "2068": [
             {
                 "date": "2068-05-17",
                 "type": "partial",
-                "max_time": "05:30:00"
+                "max_time": "05:42:17"
             },
             {
                 "date": "2068-11-09",
-                "type": "partial",
-                "max_time": "11:35:00"
+                "type": "total",
+                "max_time": "11:47:00"
             }
         ],
         "2069": [
             {
                 "date": "2069-05-06",
                 "type": "total",
-                "max_time": "08:56:00"
+                "max_time": "09:09:57"
             },
             {
                 "date": "2069-10-30",
                 "type": "total",
-                "max_time": "03:24:00"
+                "max_time": "03:35:06"
             }
         ],
         "2070": [
             {
-                "date": "2070-04-25",
-                "type": "partial",
-                "max_time": "09:07:00"
-            },
-            {
                 "date": "2070-10-19",
                 "type": "partial",
-                "max_time": "18:39:00"
+                "max_time": "18:51:12"
             }
         ],
         "2072": [
             {
                 "date": "2072-03-04",
                 "type": "total",
-                "max_time": "15:11:00"
+                "max_time": "15:23:07"
             },
             {
                 "date": "2072-08-28",
                 "type": "total",
-                "max_time": "15:51:00"
+                "max_time": "16:05:42"
             }
         ],
         "2073": [
             {
                 "date": "2073-02-22",
                 "type": "total",
-                "max_time": "07:13:00"
+                "max_time": "07:24:53"
             },
             {
                 "date": "2073-08-17",
                 "type": "total",
-                "max_time": "17:29:00"
+                "max_time": "17:42:41"
             }
         ]
     }

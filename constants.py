@@ -1,4 +1,6 @@
-AU = 1.495979e+8
+# 天文单位
+AU = 1.495978707e+8
+# 一年的长度
 YEAR = 365.2422 * 24
 # 质量取为GM的值
 PLANET_MASS = {
@@ -15,11 +17,12 @@ PLANET_MASS = {
 }
 for cb in PLANET_MASS.keys():
     PLANET_MASS[cb] *= (3600**2) / (AU**3)
+# 天体的质量
 PLANET_RADII = {
     "Sun": 6.957e5,
     "Mercury": 2.439e3,
     "Venus": 6.052e3,
-    "Earth": 6.378e3,
+    "Earth": 6.371e3,
     "Mars": 3.390e3,
     "Jupiter": 7.149e4,
     "Saturn": 6.027e4,
@@ -27,6 +30,7 @@ PLANET_RADII = {
     "Neptune": 2.476e4,
     "Moon": 1.737e3,
 }
+# 天体在星表中的标签
 PLANET_TAG = {
     "Sun": 'sun',
     "Venus": 'venus',

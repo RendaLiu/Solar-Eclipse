@@ -8,7 +8,7 @@ class CelestialBody:
         """
         初始化天体
         :param name: 天体名称 (str)
-        :param mass: 质量 (kg)
+        :param mass: 质量 (G·kg)
         :param position: 初始位置 (numpy 数组, 单位 AU)
         :param velocity: 初始速度 (numpy 数组, 单位 AU/h)
         :param radius: 天体半径 (m) ## ！！注意！！ 这里有两个长度单位
@@ -28,23 +28,10 @@ ephemeris = load('de421.bsp')
 
 # 获取天体对象
 sun = ephemeris['sun']
-earth = ephemeris['earth']
 
-# 设定时间为 2025 年 1 月 1 日 00:00 UTC
+# # 设定时间为 2025 年 1 月 1 日 00:00 UTC
 ts = load.timescale()
 t = ts.utc(2025, 1, 1, 0, 0, 0)
-t1 = ts.utc(2025, 3, 31, 7, 3, 7)
-
-# 计算相对于太阳的坐标 (单位：AU)
-earth_pos = earth.at(t).observe(sun).position.au  # AU
-earth_pos1 = earth.at(t1).observe(sun).position.au  # AU
-
-# 归一化：利用(2025, 1, 1, 0, 0, 0)与(2025, 3, 31, 7, 3, 7)的地球数据进行归一化，确保earth_pos为[1, 0, 0]
-earth_pos /= np.linalg.norm(earth_pos)
-earth_pos1 /= np.linalg.norm(earth_pos1)
-perp = np.cross(earth_pos, earth_pos1)
-perp1 = np.cross(perp, earth_pos)
-A = np.vstack([earth_pos, perp1, perp])
 
 
 def get_initial(cb_name):
@@ -55,8 +42,8 @@ def get_initial(cb_name):
     cb_obj = ephemeris[PLANET_TAG[cb_name]]
 
     # 计算位置和速度
-    velocity = (cb_obj.at(t).observe(sun).velocity.au_per_d / 24) @ A.T  # AU/h
-    pos = cb_obj.at(t).observe(sun).position.au @ A.T # AU
+    velocity = cb_obj.at(t).observe(sun).velocity.au_per_d / 24 # AU/h
+    pos = cb_obj.at(t).observe(sun).position.au # AU
 
     return CelestialBody(
         name=cb_name,

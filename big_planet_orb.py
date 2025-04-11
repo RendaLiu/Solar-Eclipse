@@ -8,7 +8,7 @@ M_SUN = PLANET_MASS['Sun']
 def circular_orbit_3d_params(r0, v0):
     """
     根据初始位置和速度确定三维正圆轨道参数
-    :param r0: 初始位置 [x, y, z] (单位一致即可)
+    :param r0: 初始位置 [x, y, z] (单位AU)
     :param v0: 初始速度 [vx, vy, vz]
     :return: 轨道半径, 角速度, 倾角, 升交点经度, 初始相位角
     """
@@ -39,7 +39,7 @@ def circular_orbit_3d_position(a, omega, i, Omega, theta0, t):
     """
     计算三维正圆轨道在时间 t 的位置
     :param a: 轨道半径
-    :param omega: 角速度 (rad/s)
+    :param omega: 角速度 (rad/h)
     :param i: 轨道倾角 (rad)
     :param Omega: 升交点经度 (rad)
     :param theta0: 初始相位角 (rad)
